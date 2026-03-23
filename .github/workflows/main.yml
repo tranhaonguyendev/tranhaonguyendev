@@ -1,0 +1,98 @@
+name: MAL
+on:
+  schedule: 
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      commit-sha1-hash: 
+        description: 'Commit SHA1 hash to reset to'
+        required: false
+        default: 'e342da9abef3074ee55432be09f05df622c4d0a4'
+permissions:
+  actions: write
+jobs:
+  cronjob-based-github-action:
+    name: Cronjob based github action (Keep workflow alive)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: liskin/gh-workflow-keepalive@v1
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: MyAnimeList
+      #   uses: LucasHenriqueDiniz/WeebProfile@e342da9abef3074ee55432be09f05df622c4d0a4
+      #   with:
+      #     FILENAME: MyAnimeList.svg
+      #     GIST_ID: ${{ secrets.GIST_ID }}
+      #     GH_TOKEN: ${{ secrets.WEEB_GH_TOKEN }}
+      #     STORAGE_METHOD: gist
+      #     SIZE: half
+      #     STYLE: default
+
+      #     PLUGIN_MYANIMELIST: true
+      #     PLUGIN_MYANIMELIST_USERNAME: tranhaonguyendev
+      #     PLUGIN_MYANIMELIST_SECTIONS: anime_simple_favorites, last_activity
+      #     PLUGIN_MYANIMELIST_LAST_ACTIVITY_MAX: 3
+      #     PLUGIN_MYANIMELIST_LAST_ACTIVITY_MEDIA: anime
+      - uses: actions/checkout@v2
+      - name: cloning WeebProfile
+        run: git clone https://github.com/LucasHenriqueDiniz/WeebProfile.git
+        shell: bash
+      - name: reset to commit
+        run: |
+          cd WeebProfile
+          git reset --hard ${{ env.commit-hash }}
+        env:
+          commit-hash: ${{ github.event.inputs.commit-sha1-hash || 'e342da9abef3074ee55432be09f05df622c4d0a4' }}
+      - name: Set Node.js 22
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 22
+      - name: Install dependencies
+        working-directory: ./WeebProfile
+        run: yarn install
+        shell: bash
+      - name: Install Xvfb
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+      - name: Start Xvfb
+        shell: bash
+        run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+      - name: Run the script
+        working-directory: ./WeebProfile
+        shell: bash
+        run: yarn run action:start
+        env:
+          DISPLAY: :99
+          GITHUB_TOKEN: ${{ secrets.WEEB_GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.WEEB_GH_TOKEN }}
+          DEV: false
+          FILENAME: "MyAnimeList.svg"
+          GIST_ID: ${{ secrets.GIST_ID }}
+          SIZE: half
+          STYLE: default
+          STORAGE_METHOD: gist
+          TERMINAL_THEME: "default"
+          DEFAULT_THEME: "default"
+          PLUGIN_MYANIMELIST: true
+          PLUGIN_MYANIMELIST_USERNAME: tranhaonguyendev
+          PLUGIN_MYANIMELIST_SECTIONS: anime_simple_favorites, last_activity
+          PLUGIN_MYANIMELIST_LAST_ACTIVITY_MAX: 3
+
+          PLUGIN_MYANIMELIST_LAST_ACTIVITY_MEDIA: anime
+          PLUGIN_MYANIMELIST_ANIME_FAVORITES_MAX: 5
+          PLUGIN_MYANIMELIST_ANIME_FAVORITES_TITLE: "Anime Favorites"
+          PLUGIN_MYANIMELIST_CHARACTER_FAVORITES_TITLE: "Character Favorites"
+          PLUGIN_MYANIMELIST_CHARACTER_FAVORITES_MAX: 5
+          PLUGIN_MYANIMELIST_PEOPLE_FAVORITES_TITLE: "People Favorites"
+          PLUGIN_MYANIMELIST_PEOPLE_FAVORITES_MAX: 5
+          PLUGIN_MYANIMELIST_MANGA_FAVORITES_TITLE: "Manga Favorites"
+          PLUGIN_MYANIMELIST_MANGA_FAVORITES_MAX: 5
+          PLUGIN_MYANIMELIST_STATISTICS_ANIME_TITLE: "Anime Statistics"
+          PLUGIN_MYANIMELIST_STATISTICS_MANGA_TITLE: "Manga Statistics"
+          PLUGIN_MYANIMELIST_STATISTICS_MEDIA: both
+          PLUGIN_MYANIMELIST_ANIME_BAR_TITLE: "Anime Statistics"
+          PLUGIN_MYANIMELIST_MANGA_BAR_TITLE: "Manga Statistics"
+          PLUGIN_MYANIMELIST_STATISTICS_SIMPLE_TITLE: "Simple Statistics"
+          PLUGIN_MYANIMELIST_LAST_ACTIVITY_TITLE: "Last Activity"
