@@ -25,7 +25,6 @@
 [![iOS](https://img.shields.io/badge/iOS-000000?&logo=apple&logoColor=white)](#)
 [![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#)
   
-![tranhaonguyendev's GitHub stats](https://github-readme-stats.vercel.app/api?username=tranhaonguyendev&text_color=9f9f9f&bg_color=151515)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=tranhaonguyendev&text_color=9f9f9f&bg_color=151515&size_weight=0.5&count_weight=0.5&hide=asp.net&langs_count=3)
 
 ### Technogicals, AI
@@ -50,15 +49,15 @@
 ---
 
 
-<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api?username=firetofficial&show_icons=true&theme=dark&locale=en&hide_border=false" alt="profile-radme-generator" />
+<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api?username=firetofficial&show_icons=true&theme=dark&locale=en&hide_border=false"/>
 
 
 
-<img align="left" height="auto" width={300} src="https://github-readme-streak-stats.herokuapp.com/?user=firetofficial&theme=dark&mode=weekly&hide_border=false&locale=en" alt="profile-radme-generator" />
+<img align="left" height="auto" width={300} src="https://github-readme-streak-stats.herokuapp.com/?user=firetofficial&theme=dark&mode=weekly&hide_border=false&locale=en"/>
 
 
 
-<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api/top-langs/?username=firetofficial&theme=dark&hide_border=false" alt="profile-radme-generator" />
+<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api/top-langs/?username=firetofficial&theme=dark&hide_border=false"/>
 
 </div>
 
