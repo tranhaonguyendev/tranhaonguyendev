@@ -49,10 +49,16 @@
 
 ---
 
-### 💬 Join my Discord server!
-<div align="center"> 
-  
-[![My Discord server](https://discord.com/api/guilds/1473005135532785820/widget.png?style=banner3)](https://discord.gg/8SUcPSQYYN)
+
+<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api?username=firetofficial&show_icons=true&theme=dark&locale=en&hide_border=false" alt="profile-radme-generator" />
+
+
+
+<img align="left" height="auto" width={300} src="https://github-readme-streak-stats.herokuapp.com/?user=firetofficial&theme=dark&mode=weekly&hide_border=false&locale=en" alt="profile-radme-generator" />
+
+
+
+<img align="left" height="auto" width={300} src="https://github-readme-stats.vercel.app/api/top-langs/?username=firetofficial&theme=dark&hide_border=false" alt="profile-radme-generator" />
 
 </div>
 
